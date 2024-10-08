@@ -1,0 +1,36 @@
+<?php require 'templates/layout/header.phtml' ?>
+<div class="genero">
+    <?php if (isset($genreName)): // Verifica si $genre está definida ?>
+        <h3>Genero: <?= $genreName ?></h3>
+    <?php endif ?>
+</div>
+<div class="filtro d-flex align-items-center">
+    <h3 class="me-2">Filtro</h3>
+    <div class="btn-group my-3 shadow bg-body-tertiary rounded" role="group" aria-label="Button group with nested dropdown">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Generos
+            </button>
+            <ul class="dropdown-menu">
+                <?php foreach ($genres as $genre): ?>
+                    <li><a class="dropdown-item" href="genero/<?= $genre->Id ?>"><?= $genre->Nombre ?></a></li>
+                <?php endforeach ?>
+                <li><a class="dropdown-item" href="peliculas">Ver todo</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    <?php foreach ($movies as $movie): ?>
+        <div class="col">
+            <div class="card shadow bg-body-tertiary rounded">
+                <img src="./images/interstellar.jpeg" class="card-img-top" alt="xd">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $movie->Titulo ?></h5>
+                </div>
+                <a href="peliculas/<?= $movie->Id ?>" class="btn btn-dark" target="_blank">Ver más</a>
+            </div>
+        </div>
+    <?php endforeach ?>
+</div>
+<?php require 'templates/layout/footer.phtml' ?>

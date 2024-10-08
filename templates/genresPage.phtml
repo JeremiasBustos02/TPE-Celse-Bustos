@@ -1,0 +1,29 @@
+<?php require 'templates/layout/header.phtml' ?>
+<div id="carouselExample" class="carousel slide shadow bg-body-tertiary rounded">
+    <div class="carousel-inner">
+        <?php foreach ($genres as $index => $genre): ?>
+            <div class="carousel-item <?= $index == 0 ? 'active' : '' ?>">
+                <a href="genero/<?= $genre->Id ?>" class="text-decoration-none">
+                    <div class="position-relative text-center">
+                        <img src="./images/interstellar.jpeg" class="d-block w-100 mx-auto carousel-image" alt="...">
+                        <div
+                            class="position-absolute top-50 start-50 translate-middle w-100 h-100 d-flex align-items-center justify-content-center overlay">
+                            <h3 class="text-white fw-bold fs-1 shadowText"><?= $genre->Nombre ?></h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach ?>
+    </div>
+
+    <!-- Botones de navegación -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<?php require 'templates/layout/footer.phtml' ?>

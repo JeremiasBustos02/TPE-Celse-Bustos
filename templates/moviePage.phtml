@@ -1,0 +1,14 @@
+<?php require 'templates/layout/header.phtml' ?>
+<div class="card mb-3">
+    <img src="./images/interstellar.jpeg" class="card-img-top" alt="imagen de interstellar">
+    <div class="card-body shadow bg-body-tertiary rounded">
+        <h5 class="card-title"><?= $movie->Titulo ?></h5>
+        <p class="card-text"><?= $movie->Descripcion ?></p>
+        <p class="card-text"><small class="text-body-secondary">Productor: <?= $movie->Productor ?></small></p>
+        <p class="card-text"><small>Duración: <?= $movie->Duracion ?></small></p>
+        <p class="card-text"><small>Puntuación en IMDb: <?= $movie->Punt_IMDb ?>/10✮</small></p>
+        <p class="card-text"><small>Genero: <?= $genreName ?></small></p>
+    </div>
+</div>
+</main>
+<?php require 'templates/layout/footer.phtml' ?>
