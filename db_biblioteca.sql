@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2024 a las 21:58:43
+-- Tiempo de generación: 09-10-2024 a las 01:48:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `biblioteca`
+-- Base de datos: `db_biblioteca`
 --
 
 -- --------------------------------------------------------
@@ -70,6 +70,25 @@ INSERT INTO `peliculas` (`Id`, `Titulo`, `Descripcion`, `Productor`, `Duracion`,
 (4, 'Memento', 'Leonard, cuya memoria está dañada por culpa de un golpe en la cabeza al intentar evitar el asesinato de su mujer, tiene que recurrir a la ayuda de una cámara instantánea y a las notas tatuadas en su cuerpo para investigar el crimen y vengarla.', 'Christopher Nolan', '92 minutos', 6.6, 4),
 (5, 'Realmente amor', 'Las vidas de varias parejas se entrecruzan en Londres, poco antes de la Navidad, con resultados románticos, divertidos y agridulces.', 'Richard Curtis', '120 minutos', 7.6, 5);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `username`, `password`) VALUES
+(1, 'webadmin', '$2y$10$1TvplMsRc9lE/jCAR9K2DONf6XiFqMyVL8Cju7jNTALvww763XvHa');
+
 --
 -- Índices para tablas volcadas
 --
@@ -89,6 +108,12 @@ ALTER TABLE `peliculas`
   ADD UNIQUE KEY `Genero_Id` (`Genero_Id`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -103,6 +128,12 @@ ALTER TABLE `generos`
 --
 ALTER TABLE `peliculas`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

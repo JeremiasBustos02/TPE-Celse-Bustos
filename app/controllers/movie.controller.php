@@ -10,10 +10,10 @@ class MovieController
     private $view;
     private $genre;
 
-    function __construct()
+    function __construct($res)
     {
         $this->model = new MovieModel();
-        $this->view = new MovieView();
+        $this->view = new MovieView($res->user);
         $this->genre = new GenreModel();
     }
 

@@ -6,9 +6,9 @@ class HomeController
 {
     private $view;
 
-    function __construct()
+    function __construct($res)
     {
-        $this->view = new HomeView();
+        $this->view = new HomeView($res->user);
     }
 
     public function showHome()

@@ -1,7 +1,10 @@
 <?php
 class MovieView
 {
-
+    private $user = null;
+    public function __construct($user) {
+        $this->user = $user;
+    }
     public function showMovies($movies, $genres)
     {
         require_once 'templates/moviesPage.phtml';
