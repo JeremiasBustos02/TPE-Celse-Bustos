@@ -1,13 +1,13 @@
 <?php require 'templates/layout/header.phtml' ?>
 <div class="card mb-3">
-    <img src="<?= $movie->image_url ?>" class="card-img-top" alt="imagen de interstellar">
+    <img src="<?= $movie->image_url ?>" class="card-img-top" alt="<?= $movie->name ?>">
     <div class="card-body shadow bg-body-tertiary rounded">
         <h5 class="card-title"><?= $movie->title ?></h5>
         <p class="card-text"><?= $movie->description ?></p>
-        <p class="card-text"><small class="text-body-secondary">Productor: <?= $movie->producer ?></small></p>
-        <p class="card-text"><small>Duración: <?= $movie->duration ?></small></p>
-        <p class="card-text"><small>Puntuación en IMDb: <?= $movie->punct_imdb ?>/10✮</small></p>
-        <p class="card-text"><small>Genero: <?= $genreName ?></small></p>
+        <p class="card-text"><small class="text-body-secondary">Producer: <?= $movie->producer ?></small></p>
+        <p class="card-text"><small>Duration: <?= $movie->duration ?></small></p>
+        <p class="card-text"><small>Punctuation in IMDb: <?= $movie->punct_imdb ?>/10✮</small></p>
+        <p class="card-text"><small>Genre: <?= $genreName ?></small></p>
     </div>
 </div>
 </main>

@@ -1,21 +1,21 @@
 <?php require 'templates/layout/header.phtml' ?>
-<div class="genero">
+<div class="genre">
     <?php if (isset($genreName)): // Verifica si $genre está definida ?>
-        <h3>Genero: <?= $genreName ?></h3>
+        <h3>Genre: <?= $genreName ?></h3>
     <?php endif ?>
 </div>
 <div class="filtro d-flex align-items-center">
-    <h3 class="me-2">Filtro</h3>
+    <h3 class="me-2">Filter</h3>
     <div class="btn-group my-3 shadow bg-body-tertiary rounded" role="group" aria-label="Button group with nested dropdown">
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Generos
+                Genres
             </button>
             <ul class="dropdown-menu">
                 <?php foreach ($genres as $genre): ?>
                     <li><a class="dropdown-item" href="genero/<?= $genre->id ?>"><?= $genre->name ?></a></li>
                 <?php endforeach ?>
-                <li><a class="dropdown-item" href="peliculas">Ver todo</a></li>
+                <li><a class="dropdown-item" href="movies">View all</a></li>
             </ul>
         </div>
     </div>
@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?= $movie->title ?></h5>
                 </div>
-                <a href="peliculas/<?= $movie->id ?>" class="btn btn-dark">Ver más</a>
+                <a href="movies/<?= $movie->id ?>" class="btn btn-dark">See more</a>
             </div>
         </div>
     <?php endforeach ?>

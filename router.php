@@ -32,7 +32,7 @@ switch ($params[0]) {
         $HomeController = new HomeController($res);
         $HomeController->showHome();
         break;
-    case 'peliculas':
+    case 'movies':
         sessionAuthMiddleware($res);
         $MovieController = new MovieController($res);
         if (isset($params[1])) {
@@ -41,7 +41,7 @@ switch ($params[0]) {
             $MovieController->showAllMovies();
         }
         break;
-    case 'genero':
+    case 'genre':
         sessionAuthMiddleware($res);
         $MovieController = new MovieController($res);
         if (isset($params[1])) {
@@ -49,6 +49,16 @@ switch ($params[0]) {
         } else {
             $MovieController->showGenres();
         }
+        break;
+    case 'modifyGenres':
+        sessionAuthMiddleware($res);
+        $MovieController = new MovieController($res);
+        $MovieController->showGenresABM();
+        break;
+    case 'modifyMovies':
+        sessionAuthMiddleware($res);
+        $MovieController = new MovieController($res);
+        $MovieController->showMoviesABM();
         break;
     case 'showLogin':
         $AuthController = new AuthController();

@@ -55,4 +55,13 @@ class MovieController
         $this->view->showGenres($genres);
     }
 
+    public function showGenresABM()
+    {
+        $this->view->showGenresABM();
+    }
+    public function showMoviesABM()
+    {
+        $this->view->showMoviesABM();
+    }
+
 }

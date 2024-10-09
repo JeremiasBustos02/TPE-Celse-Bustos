@@ -2,7 +2,8 @@
 class MovieView
 {
     private $user = null;
-    public function __construct($user) {
+    public function __construct($user)
+    {
         $this->user = $user;
     }
     public function showMovies($movies, $genres)
@@ -23,5 +24,15 @@ class MovieView
     public function showGenres($genres)
     {
         require_once 'templates/genresPage.phtml';
+    }
+
+    public function showGenresABM()
+    {
+        require_once 'templates/genresABMPage.phtml';
+    }
+
+    public function showMoviesABM()
+    {
+        require_once 'templates/moviesABMPage.phtml';
     }
 }
