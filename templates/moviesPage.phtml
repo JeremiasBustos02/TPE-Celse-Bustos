@@ -13,7 +13,7 @@
             </button>
             <ul class="dropdown-menu">
                 <?php foreach ($genres as $genre): ?>
-                    <li><a class="dropdown-item" href="genero/<?= $genre->Id ?>"><?= $genre->Nombre ?></a></li>
+                    <li><a class="dropdown-item" href="genero/<?= $genre->id ?>"><?= $genre->name ?></a></li>
                 <?php endforeach ?>
                 <li><a class="dropdown-item" href="peliculas">Ver todo</a></li>
             </ul>
@@ -24,11 +24,11 @@
     <?php foreach ($movies as $movie): ?>
         <div class="col">
             <div class="card shadow bg-body-tertiary rounded">
-                <img src="./images/interstellar.jpeg" class="card-img-top" alt="xd">
+                <img src="<?= $movie->image_url ?>" class="card-img-top image-list-movies" alt="<?= $movie->title ?>">
                 <div class="card-body">
-                    <h5 class="card-title"><?= $movie->Titulo ?></h5>
+                    <h5 class="card-title"><?= $movie->title ?></h5>
                 </div>
-                <a href="peliculas/<?= $movie->Id ?>" class="btn btn-dark">Ver más</a>
+                <a href="peliculas/<?= $movie->id ?>" class="btn btn-dark">Ver más</a>
             </div>
         </div>
     <?php endforeach ?>

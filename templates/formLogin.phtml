@@ -5,18 +5,19 @@
         <?= $error ?>
     </div>
 <?php endif ?>
-<div class="vh-100 w-50 m-auto d-flex justify-content-center align-items-center shadow bg-body-tertiary rounded">
-    <form class="d-flex flex-column w-50" method='post' action='login'>
-        <div class='form-group'>
-            <label for='text'>User</label>
+<div class="vh-100 d-flex justify-content-center align-items-center">
+    <form class="d-flex flex-column w-50 shadow bg-light bg-gradient bg-opacity-75 rounded p-3" method='post' action='login'>
+        <h4 class="text-center">Login</h4>
+        <div class='form-group mb-2'>
+            <label for='username'>User</label>
             <input type='text' class='form-control' id='username' name='username' required>
         </div>
-        <div class='form-group'>
+        <div class='form-group mb-2'>
             <label for='password'>Password</label>
             <input type='password' class='form-control' id='password' name='password' required>
         </div>
-        <button type='submit' class='btn btn-primary w-25 mt-2 m-auto'>Login</button>
-        <a class="mt-2 m-auto" href="home">Entrar como invitado</a>
+        <button type='submit' class='btn btn-dark w-50 mt-2 m-auto'>Login</button>
+        <a class="mt-2 m-auto text-dark" href="home #home">Enter as a guest</a>
     </form>
 </div>
 <?php require 'templates/layout/footer.phtml' ?>

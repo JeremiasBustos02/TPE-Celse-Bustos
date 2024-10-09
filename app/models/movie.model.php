@@ -5,13 +5,13 @@ class MovieModel
 
     function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_biblioteca;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;dbname=db_library;charset=utf8', 'root', '');
     }
 
     public function getMovies()
     {
         // 2. Ejecuto la consulta
-        $query = $this->db->prepare('SELECT * FROM peliculas');
+        $query = $this->db->prepare('SELECT * FROM movies');
         $query->execute();
 
         // 3. Obtengo los datos en un arreglo de objetos
@@ -29,7 +29,7 @@ class MovieModel
 
     public function getMovieById($id)
     {
-        $query = $this->db->prepare('SELECT * FROM peliculas WHERE Id = ?');
+        $query = $this->db->prepare('SELECT * FROM movies WHERE id = ?');
         $query->execute([$id]);
 
         $movie = $query->fetch(PDO::FETCH_OBJ);
@@ -39,7 +39,7 @@ class MovieModel
 
     public function getMoviesByGenre($id)
     {
-        $query = $this->db->prepare('SELECT * FROM peliculas WHERE Genero_Id = ?');
+        $query = $this->db->prepare('SELECT * FROM movies WHERE genre_id = ?');
         $query->execute([$id]);
 
         $movies = $query->fetchAll(PDO::FETCH_OBJ);
@@ -49,17 +49,17 @@ class MovieModel
 
     public function getGenre($id)
     {
-        $query = $this->db->prepare('SELECT * FROM peliculas WHERE Id = ?');
+        $query = $this->db->prepare('SELECT * FROM movies WHERE genre_id = ?');
         $query->execute([$id]);
 
         $movie = $query->fetch(PDO::FETCH_OBJ);
 
         if ($movie) {
             // Si existe la película, retorna el Id_Genero
-            return $movie->Genero_Id;
+            return $movie->genre_id;
         } else {
             // Si no se encontró la película, retornamos null o un valor por defecto
-            return null;  // O podrías lanzar una excepción o manejarlo de otra forma
+            return null;
         }
         ;
     }

@@ -5,13 +5,13 @@ class GenreModel
 
     function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_biblioteca;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=localhost;dbname=db_library;charset=utf8', 'root', '');
     }
 
     public function getGenres()
     {
         //Ejecuto la consulta
-        $query = $this->db->prepare('SELECT * FROM generos');
+        $query = $this->db->prepare('SELECT * FROM genres');
         $query->execute();
 
         //Obtengo los datos en un arreglo de objetos
@@ -30,14 +30,14 @@ class GenreModel
     public function getNameGenreById($id)
     {
         //Ejecuto la consulta
-        $query = $this->db->prepare('SELECT * FROM generos WHERE Id = ?');
+        $query = $this->db->prepare('SELECT * FROM genres WHERE id = ?');
         $query->execute([$id]);
 
         //Obtengo los datos en un arreglo de objetos
         $genre = $query->fetch(PDO::FETCH_OBJ);
 
         if ($genre) {
-            return $genre->Nombre;
+            return $genre->name;
         } else {
             //Si no se encuentra el género, retornamos null
             return null;
