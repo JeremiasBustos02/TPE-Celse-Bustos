@@ -1,0 +1,21 @@
+<?php require 'templates/layout/header.phtml' ?>
+
+<div class="container mt-4 d-flex flex-column vh-100">
+    <div class="header">
+        <h1>Movie management</h1>
+            <!-- Formulario de modificacion -->
+            <?php if (isset($movie)): ?>
+            <?php require 'formMoviesDBModify.phtml' ?>
+
+        <?php else: ?>
+            <div class="row">
+                <!-- Columna para el formulario -->
+                <?php require 'formMoviesDB.phtml' ?>
+
+                <!-- Columna para la lista de generos -->
+                <?php require 'listMoviesDB.phtml' ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php require 'templates/layout/footer.phtml' ?>

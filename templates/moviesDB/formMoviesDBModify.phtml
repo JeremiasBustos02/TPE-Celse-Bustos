@@ -1,0 +1,33 @@
+<h3>Modify movie</h3>
+<form class="mb-3" action="updateMovie" method="POST">
+    <input type="hidden" name="id" value="<?= $movie->id ?>">
+    <label for="title" class="form-label"><h4>Title</h4></label>
+    <input type="text" class="form-control" name="title" value="<?= $movie->title ?>" required>
+    
+    <label for="description" class="form-label"><h4>Description</h4></label>
+    <input type="text" class="form-control" name="description" value="<?= $movie->description ?>" required>
+ 
+    <label for="producer" class="form-label"><h4>Producer</h4></label>
+    <input type="text" class="form-control" name="producer" value="<?= $movie->producer ?>" required>
+
+    <label for="duration" class="form-label"><h4>Duration</h4></label>
+    <input type="text" class="form-control" name="duration" value="<?= $movie->duration ?>" required>
+
+    <label for="punct_imdb" class="form-label"><h4>punct_imdb</h4></label>
+    <input type="number" step="any" class="form-control" name="punct_imdb" value="<?= $movie->punct_imdb ?>" required>
+
+
+    <label for="image_url" class="form-label"><h4>URL de la imagen</h4></label>
+    <input type="url" class="form-control" name="image_url" value="<?= $movie->image_url ?>" required>
+    
+    <label for="genre" class="form-label m-0">
+            <h4>Genero</h4>
+        </label>
+        <select class="form-select m-0" aria-label="Default select example" name="genre_id">
+            <?php foreach ($genres as $genre): ?>
+                <option value="<?= $genre->id ?>"><?= $genre->name ?></option>
+            <?php endforeach; ?>
+        </select>
+
+    <button type="submit" class="btn btn-primary mt-2">Confirm modification</button>
+</form>

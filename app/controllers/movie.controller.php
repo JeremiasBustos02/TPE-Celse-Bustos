@@ -49,19 +49,93 @@ class MovieController
         $this->view->showMoviesByGenre($movies, $genreName, $genres);
     }
 
-    public function showGenres()
-    {
-        $genres = $this->genre->getGenres();
-        $this->view->showGenres($genres);
-    }
-
-    public function showGenresABM()
-    {
-        $this->view->showGenresABM();
-    }
     public function showMoviesABM()
     {
-        $this->view->showMoviesABM();
+        $movies = $this->model->getMovies();
+        //Trae todos los generos
+        $genres = $this->genre->getGenres();
+        $this->view->showMoviesABM($movies, $genres);
     }
 
+    public function showModifyForm($id) {
+        $movie = $this->model->getMovieById($id);
+
+        if (!$movie) {
+            return $this->view->showError("Movie not found with id = $id");
+        }
+        //Trae todos los generos
+        $genres = $this->genre->getGenres();
+        $this->view->showModifyForm($movie, $genres);
+    }
+
+    public function addMovie()
+    {
+        if (!isset($_POST['title']) || empty($_POST['title'])) {
+            return $this->view->showError('The name needs to be completed');
+        }
+        if (!isset($_POST['description']) || empty($_POST['description'])) {
+            return $this->view->showError('The description needs to be completed');
+        }
+        if (!isset($_POST['producer']) || empty($_POST['producer'])) {
+            return $this->view->showError('The producer needs to be completed');
+        }
+        if (!isset($_POST['duration']) || empty($_POST['duration'])) {
+            return $this->view->showError('The duration needs to be completed');
+        }
+        if (!isset($_POST['punct_imdb']) || empty($_POST['punct_imdb'])) {
+            return $this->view->showError('The punctuation IMDb needs to be completed');
+        }
+        if (!isset($_POST['image_url']) || empty($_POST['image_url'])) {
+            return $this->view->showError('The URL needs to be completed');
+        }
+        if (!isset($_POST['genre_id']) || empty($_POST['genre_id'])) {
+            return $this->view->showError('The genre id needs to be completed');
+        }
+
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $producer = $_POST['producer'];
+        $duration = $_POST['duration'];
+        $punct_imdb = $_POST['punct_imdb'];
+        $image_url = $_POST['image_url'];
+        $genre_id = $_POST['genre_id'];
+
+        $id = $this->model->insertMovie($title, $description, $producer, $duration, $punct_imdb, $image_url, $genre_id);
+
+        // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
+        header('Location: ' . 'dataBaseMovies');
+    }
+    public function deleteMovie($id) {
+        // obtengo la tarea por id
+        $movie = $this->model->getMovieById($id);
+
+        if (!$movie) {
+            return $this->view->showError("Movie with id does not exist = $id");
+        }
+
+        // borro la tarea y redirijo
+        $this->model->eraseMovie($id);
+
+        header('Location: ' . BASE_URL . 'dataBaseMovies');
+    }
+
+    public function updateMovie() {
+        if (!isset($_POST['id']) || empty($_POST['id'])) {
+            return $this->view->showError('movie ID is required');
+        }
+
+        $id = $_POST['id'];
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $producer = $_POST['producer'];
+        $duration = $_POST['duration'];
+        $punct_imdb = $_POST['punct_imdb'];
+        $image_url = $_POST['image_url'];
+        $genre_id = $_POST['genre_id'];
+
+        $this->model->updateMovie($id, $title, $description, $producer, $duration, $punct_imdb, $image_url, $genre_id);
+
+        // Redirigir al listado de géneros después de la modificación
+        header('Location: ' . BASE_URL . 'dataBaseMovies');
+    }
 }

@@ -61,6 +61,22 @@ class MovieModel
             // Si no se encontró la película, retornamos null o un valor por defecto
             return null;
         }
-        ;
+    }
+    public function insertMovie($title, $description, $producer, $duration, $punct_imdb, $image_url, $genre_id) { 
+        $query = $this->db->prepare('INSERT INTO movies(title, description, producer, duration, punct_imdb, image_url, genre_id) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $query->execute([$title, $description, $producer, $duration, $punct_imdb, $image_url, $genre_id]);
+    
+        $id = $this->db->lastInsertId();
+    
+        return $id;
+    }
+    public function updateMovie($id, $title, $description, $producer, $duration, $punct_imdb, $image_url, $genre_id) {
+        $query = $this->db->prepare('UPDATE movies SET title = ?, description = ?, producer = ?, duration = ?, punct_imdb = ?, image_url = ?, genre_id = ? WHERE id = ?');
+        $query->execute([$title, $description, $producer, $duration, $punct_imdb, $image_url, $genre_id, $id]);
+    }
+
+    public function eraseMovie($id) {
+        $query = $this->db->prepare('DELETE FROM movies WHERE id = ?');
+        $query->execute([$id]);
     }
 }

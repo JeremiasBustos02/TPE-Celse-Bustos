@@ -21,18 +21,17 @@ class MovieView
         require_once 'templates/moviesPage.phtml';
     }
 
-    public function showGenres($genres)
+    public function showMoviesABM($movies, $genres)
     {
-        require_once 'templates/genresPage.phtml';
+        require_once 'templates/moviesDB/moviesABMPage.phtml';
     }
 
-    public function showGenresABM()
+    public function showModifyForm($movie, $genres)
     {
-        require_once 'templates/genresABMPage.phtml';
+        require 'templates/moviesDB/moviesABMPage.phtml';
     }
 
-    public function showMoviesABM()
-    {
-        require_once 'templates/moviesABMPage.phtml';
+    public function showError($error) {
+        require 'templates/error.phtml';
     }
 }

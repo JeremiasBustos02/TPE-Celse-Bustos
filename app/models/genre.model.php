@@ -24,7 +24,19 @@ class GenreModel
             // Si no se encontraron generos, retornamos null
             return null;
         }
-        ;
+    }
+    public function getGenre($id) {    
+        $query = $this->db->prepare('SELECT * FROM genres WHERE id = ?');
+        $query->execute([$id]);   
+    
+        $genre = $query->fetch(PDO::FETCH_OBJ);
+    
+        return $genre;
+    }
+
+    public function eraseGenre($id) {
+        $query = $this->db->prepare('DELETE FROM genres WHERE id = ?');
+        $query->execute([$id]);
     }
 
     public function getNameGenreById($id)
@@ -42,5 +54,18 @@ class GenreModel
             //Si no se encuentra el género, retornamos null
             return null;
         }
+    }
+
+    public function insertGenre($name, $image_url) { 
+        $query = $this->db->prepare('INSERT INTO genres(name, image_url) VALUES (?, ?)');
+        $query->execute([$name, $image_url]);
+    
+        $id = $this->db->lastInsertId();
+    
+        return $id;
+    }
+    public function updateGenre($id, $name, $image_url) {
+        $query = $this->db->prepare('UPDATE genres SET name = ?, image_url = ? WHERE id = ?');
+        $query->execute([$name, $image_url, $id]);
     }
 }

@@ -1,0 +1,44 @@
+<div class="col-md-4">
+    <form class="mb-3" action="addMovie" method="POST">
+        <h3>Add new genre</h3>
+        <label for="title" class="form-label m-0">
+            <h4>Title</h4>
+        </label>
+        <input type="text" class="form-control m-0" name="title" required>
+
+        <label for="description" class="form-label m-0">
+            <h4>Description</h4>
+        </label>
+        <input type="text" class="form-control m-0" name="description" required>
+
+        <label for="producer" class="form-label m-0">
+            <h4>Producer</h4>
+        </label>
+        <input type="text" class="form-control m-0" name="producer" required>
+
+        <label for="duration" class="form-label m-0">
+            <h4>Duration</h4>
+        </label>
+        <input type="text" class="form-control m-0" name="duration" required>
+
+        <label for="punct_imdb" class="form-label m-0">
+            <h4>Punctuation in IMDb</h4>
+        </label>
+        <input type="text" class="form-control m-0" name="punct_imdb" required>
+
+        <label for="image_url" class="form-label m-0">
+            <h4>URL de la imagen</h4>
+        </label>
+        <input type="url" class="form-control m-0" name="image_url" required>
+
+        <label for="genre" class="form-label m-0">
+            <h4>Genero</h4>
+        </label>
+        <select class="form-select m-0" aria-label="Default select example" name="genre_id">
+            <?php foreach ($genres as $genre): ?>
+                <option value="<?= $genre->id ?>"><?= $genre->name ?></option>
+            <?php endforeach; ?>
+        </select>
+        <button type="submit" class="btn btn-success mt-2">Add movie</button>
+    </form>
+</div>
