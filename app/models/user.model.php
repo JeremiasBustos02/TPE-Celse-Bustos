@@ -1,10 +1,11 @@
 <?php
-require_once 'modelConfig.php';
+require_once 'config.model.php';
 class UserModel {
     private $db;
 
-    public function __construct() {
-       $this->db = new ModelConfig();
+    function __construct() {
+        $config = new ConfigModel();
+        $this->db = $config->getDB(); // Obtenemos el objeto PDO
     }
  
     public function getUserByUsername($username) {    

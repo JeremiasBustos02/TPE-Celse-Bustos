@@ -1,12 +1,12 @@
 <?php
-require_once 'modelConfig.php';
+require_once 'config.model.php';
 class MovieModel
 {
     private $db;
 
-    function __construct()
-    {
-        $this->db = new ModelConfig();
+    function __construct() {
+        $config = new ConfigModel();
+        $this->db = $config->getDB();
     }
 
     public function getMovies()
