@@ -1,11 +1,12 @@
 <?php
+require_once 'modelConfig.php';
 class GenreModel
 {
     private $db;
 
     function __construct()
     {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_library;charset=utf8', 'root', '');
+        $this->db = new ModelConfig();
     }
 
     public function getGenres()

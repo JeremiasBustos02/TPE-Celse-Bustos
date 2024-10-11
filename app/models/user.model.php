@@ -1,9 +1,10 @@
 <?php
+require_once 'modelConfig.php';
 class UserModel {
     private $db;
 
     public function __construct() {
-       $this->db = new PDO('mysql:host=localhost;dbname=db_library;charset=utf8', 'root', '');
+       $this->db = new ModelConfig();
     }
  
     public function getUserByUsername($username) {    
