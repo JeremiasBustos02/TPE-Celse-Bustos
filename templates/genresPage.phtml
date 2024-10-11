@@ -4,7 +4,7 @@
         <div class="carousel-inner">
             <?php foreach ($genres as $index => $genre): ?>
                 <div class="carousel-item <?= $index == 0 ? 'active' : '' ?>">
-                    <a href="genero/<?= $genre->id ?>" class="text-decoration-none">
+                    <a href="genre/<?= $genre->id ?>" class="text-decoration-none">
                         <div class="position-relative text-center">
                             <img src="<?= $genre->image_url ?>" class="d-block w-100 h-100 mx-auto image-genre" alt="<?= $genre->name ?>">
                             <div
