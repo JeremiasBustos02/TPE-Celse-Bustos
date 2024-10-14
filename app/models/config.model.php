@@ -1,31 +1,48 @@
 <?php
 require_once './config.php';
+
 class ConfigModel
 {
-    protected $db;
+  protected $db;
 
-    public function __construct()
-    {
-        $this->db = new PDO(
-            "mysql:host=" . MYSQL_HOST .
-            ";dbname=" . MYSQL_DB . ";charset=utf8",
-            MYSQL_USER,
-            MYSQL_PASS
-        );
-        
-        $this->__deploy();
-    }
+  public function __construct()
+  {
+    // Nos conectamos al servidos MySQL
+    $this->db = new PDO(
+      "mysql:host=" . MYSQL_HOST,
+      MYSQL_USER,
+      MYSQL_PASS
+    );
 
-    public function getDB() {
-        return $this->db;
-    }
-    private function __deploy()
-    {
-        $query = $this->db->query('SHOW TABLES');
-        $tables = $query->fetchAll();
-        if (count($tables) == 0)
-        {
-            $sql =<<<END
+    // Si no existe la base de datos, la creamos
+    $this->db->exec("CREATE DATABASE IF NOT EXISTS " . MYSQL_DB .
+      " CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci");
+
+    // Ahora nos volvemos a conectar especificando la base de datos
+    $this->db = new PDO(
+      "mysql:host=" . MYSQL_HOST .
+      ";dbname=" . MYSQL_DB . ";charset=utf8",
+      MYSQL_USER,
+      MYSQL_PASS
+    );
+
+    $this->__deploy();
+  }
+
+  public function getDB()
+  {
+    return $this->db;
+  }
+
+  private function __deploy()
+  {
+    //Acá se verifica si existen las tablas
+    $query = $this->db->query('SHOW TABLES');
+    $tables = $query->fetchAll();
+
+    if (count($tables) == 0) {
+      //Si no existen las tablas, creamos y llenamos con datos automaticamente
+      $sql = <<<END
             CREATE TABLE `genres` (
               `id` int(11) NOT NULL AUTO_INCREMENT,
               `name` varchar(20) NOT NULL,
@@ -53,7 +70,6 @@ class ConfigModel
               PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-            -- Insertar los datos
             INSERT INTO `genres` (`id`, `name`, `image_url`) VALUES
             (1, 'Acción', 'https://i.ibb.co/4sbGV05/accion.jpg'),
             (2, 'Terror', 'https://i.ibb.co/Mhp6qPq/terror.jpg'),
@@ -70,9 +86,9 @@ class ConfigModel
 
             INSERT INTO `users` (`id`, `username`, `password`) VALUES
             (1, 'webadmin', '$2y$10$1TvplMsRc9lE/jCAR9K2DONf6XiFqMyVL8Cju7jNTALvww763XvHa');
-
             END;
-            $this->db->query($sql);
-        }
+
+      $this->db->exec($sql);
     }
+  }
 }
