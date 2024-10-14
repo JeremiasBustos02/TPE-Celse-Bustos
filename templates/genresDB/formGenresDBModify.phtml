@@ -4,10 +4,10 @@
     <label for="name" class="form-label">
         <h4>Name</h4>
     </label>
-    <input type="text" class="form-control" name="name" value="<?= $genre->name ?>" required>
+    <input type="text" class="form-control" name="name" value="<?= htmlspecialchars($genre->name) ?>" required>
     <label for="image_url" class="form-label">
         <h4>URL de la imagen</h4>
     </label>
-    <input type="url" class="form-control" name="image_url" value="<?= $genre->image_url ?>" required>
+    <input type="url" class="form-control" name="image_url" value="<?= htmlspecialchars($genre->image_url) ?>" required>
     <button type="submit" class="btn btn-primary mt-2">Confirm modification</button>
 </form>

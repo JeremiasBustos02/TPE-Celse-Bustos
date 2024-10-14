@@ -36,7 +36,7 @@
         </label>
         <select class="form-select m-0" aria-label="Default select example" name="genre_id">
             <?php foreach ($genres as $genre): ?>
-                <option value="<?= $genre->id ?>"><?= $genre->name ?></option>
+                <option value="<?= $genre->id ?>"><?= htmlspecialchars($genre->name) ?></option>
             <?php endforeach; ?>
         </select>
         <button type="submit" class="btn btn-success mt-2">Add movie</button>
