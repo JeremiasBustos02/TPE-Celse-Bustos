@@ -36,19 +36,19 @@ class GenreController
     
         $id = $this->model->insertGenre($name, $image_url);
     
-        // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
+        // Refresco la pagina
         header('Location: ' . 'dataBaseGenres');
     }
 
     public function deleteGenre($id) {
-        // obtengo la tarea por id
+        // Obtengo el genero por id
         $genre = $this->model->getGenre($id);
 
         if (!$genre) {
             return $this->view->showError("Genre with id does not exist = $id");
         }
 
-        // borro la tarea y redirijo
+        // Borro el genero y redirijo
         $this->model->eraseGenre($id);
 
         header('Location: ' . BASE_URL . 'dataBaseGenres');
@@ -75,7 +75,7 @@ class GenreController
 
         $this->model->updateGenre($id, $name, $image_url);
 
-        // Redirigir al listado de géneros después de la modificación
+        // Refresco la pagina
         header('Location: ' . BASE_URL . 'dataBaseGenres');
     }
 }

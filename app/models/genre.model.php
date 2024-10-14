@@ -31,8 +31,14 @@ class GenreModel
         $query->execute([$id]);   
     
         $genre = $query->fetch(PDO::FETCH_OBJ);
-    
-        return $genre;
+        
+        if ($genre) {
+            // Si existen el genero, retorna el genero
+            return $genre;
+        } else {
+            // Si no existe el genero, retornamos null
+            return null;
+        }
     }
 
     public function eraseGenre($id) {

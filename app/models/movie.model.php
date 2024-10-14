@@ -11,19 +11,19 @@ class MovieModel
 
     public function getMovies()
     {
-        // 2. Ejecuto la consulta
+        // Ejecuto la consulta
         $query = $this->db->prepare('SELECT * FROM movies');
         $query->execute();
 
-        // 3. Obtengo los datos en un arreglo de objetos
+        // Obtengo los datos en un arreglo de objetos
         $movies = $query->fetchAll(PDO::FETCH_OBJ);
 
         if ($movies) {
-            // Si existe la película, retorna el Id_Genero
+            // Si existe la película, retorna las peliculas
             return $movies;
         } else {
-            // Si no se encontró la película, retornamos null o un valor por defecto
-            return null;  // O podrías lanzar una excepción o manejarlo de otra forma
+            // Si no se encontró la película, retornamos null
+            return null;
         }
         ;
     }
@@ -35,7 +35,13 @@ class MovieModel
 
         $movie = $query->fetch(PDO::FETCH_OBJ);
 
-        return $movie;
+        if ($movie) {
+            // Si existe la película, retorna la pelicula
+            return $movie;
+        } else {
+            // Si no se encontró la película, retornamos null
+            return null;
+        }
     }
 
     public function getMoviesByGenre($id)
@@ -45,7 +51,13 @@ class MovieModel
 
         $movies = $query->fetchAll(PDO::FETCH_OBJ);
 
-        return $movies;
+        if ($movies) {
+            // Si existe la película, retornamos la/s pelicula/s
+            return $movies;
+        } else {
+            // Si no se encontraron peliculas, retormanos null
+            return null;
+        }
     }
 
     public function getGenre($id)

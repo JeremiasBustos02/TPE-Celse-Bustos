@@ -30,8 +30,6 @@ class AuthController {
         // Verificar que el usuario está en la base de datos
         $userFromDB = $this->model->getUserByUsername($username);
 
-        // password: 123456
-        // $userFromDB->password: $2y$10$xQop0wF1YJ/dKhZcWDqHceUM96S04u73zGeJtU80a1GmM.H5H0EHC
         if($userFromDB && password_verify($password, $userFromDB->password)){
             // Guardo en la sesión el ID del usuario
             session_start();
@@ -41,7 +39,6 @@ class AuthController {
     
             // Redirijo al home
             header('Location: ' . 'home');
-            //$this->view->login(); otra forma
         } else {
             return $this->view->showLogin('Credenciales incorrectas');
         }

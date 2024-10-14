@@ -102,18 +102,18 @@ class MovieController
 
         $id = $this->model->insertMovie($title, $description, $producer, $duration, $punct_imdb, $image_url, $genre_id);
 
-        // redirijo al home (también podriamos usar un método de una vista para motrar un mensaje de éxito)
+        // Refresco la pagina
         header('Location: ' . 'dataBaseMovies');
     }
     public function deleteMovie($id) {
-        // obtengo la tarea por id
+        // Obtengo la pelicula por id
         $movie = $this->model->getMovieById($id);
 
         if (!$movie) {
             return $this->view->showError("Movie with id does not exist = $id");
         }
 
-        // borro la tarea y redirijo
+        // Borro la pelicula y redirijo
         $this->model->eraseMovie($id);
 
         header('Location: ' . BASE_URL . 'dataBaseMovies');
@@ -135,7 +135,7 @@ class MovieController
 
         $this->model->updateMovie($id, $title, $description, $producer, $duration, $punct_imdb, $image_url, $genre_id);
 
-        // Redirigir al listado de géneros después de la modificación
+        // Refresco la pagina
         header('Location: ' . BASE_URL . 'dataBaseMovies');
     }
 }

@@ -14,6 +14,12 @@ class UserModel {
     
         $user = $query->fetch(PDO::FETCH_OBJ);
     
-        return $user;
+        if ($user) {
+            // Si existe usuario, retornamos el user
+            return $user;
+        } else {
+            // Si no se encontro el user, retornamos null
+            return null;
+        }
     }
 }
