@@ -1,5 +1,5 @@
 <?php require 'templates/layout/header.phtml' ?>
-<div class="card mb-3">
+<article class="card mb-3">
     <img src="<?= $movie->image_url ?>" class="card-img-top" alt="<?= $movie->name ?>">
     <div class="card-body shadow bg-body-tertiary rounded">
         <h5 class="card-title"><?= $movie->title ?></h5>
@@ -9,6 +9,6 @@
         <p class="card-text"><small>Punctuation in IMDb: <?= $movie->punct_imdb ?>/10✮</small></p>
         <p class="card-text"><small>Genre: <?= $genreName ?></small></p>
     </div>
-</div>
+</article>
 </main>
 <?php require 'templates/layout/footer.phtml' ?>
