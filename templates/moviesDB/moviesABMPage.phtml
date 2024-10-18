@@ -1,7 +1,7 @@
 <?php require 'templates/layout/header.phtml' ?>
 
-<div class="container mt-4 d-flex flex-column vh-100">
-    <div class="header">
+<section class="container mt-4 d-flex flex-column vh-100">
+    <article class="header">
         <h1>Movie management</h1>
             <!-- Formulario de modificacion -->
             <?php if (isset($movie)): ?>
@@ -16,6 +16,6 @@
                 <?php require 'listMoviesDB.phtml' ?>
             </div>
         <?php endif; ?>
-    </div>
-</div>
+    </article>
+</section>
 <?php require 'templates/layout/footer.phtml' ?>
